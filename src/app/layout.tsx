@@ -25,7 +25,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#1e1b4b" />
       </head>
-      <body className={`${inter.className} antialiased bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900`}>
+      <body className={`${inter.className} antialiased`}>
         <main className="min-h-screen">
           {children}
         </main>

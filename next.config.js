@@ -1,15 +1,24 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-        remotePatterns: [
-            {
-                protocol: 'https',
-                hostname: 'user-gen-media-assets.s3.amazonaws.com',
-                port: '',
-                pathname: '/**',
-            },
-        ],
+    experimental: {
+        appDir: true,
     },
-};
+    images: {
+        domains: [],
+    },
+    webpack: (config) => {
+        config.module.rules.push({
+            test: /\.(png|jpe?g|gif|svg)$/i,
+            use: {
+                loader: 'file-loader',
+                options: {
+                    publicPath: '/_next/static/images/',
+                    outputPath: 'static/images/',
+                },
+            },
+        });
+        return config;
+    },
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
